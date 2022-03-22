@@ -44,9 +44,13 @@ func main() {
 	var (
 		aFloat32 float32 = 2.45
 		aFloat64 float64 = 23.154 // defaults to float64
+		bFloat64         = 3e12
+		cFloat64         = 3e12
 	)
 	fmt.Printf("%v, %T\n", aFloat32, aFloat32)
 	fmt.Printf("%v, %T\n", aFloat64, aFloat64)
+	fmt.Printf("%v, %T\n", bFloat64, bFloat64)
+	fmt.Printf("%v, %T\n", cFloat64, cFloat64)
 
 	// boolean data
 	aBool := true
