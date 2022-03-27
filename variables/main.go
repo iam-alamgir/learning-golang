@@ -57,8 +57,8 @@ func main() {
 	fmt.Printf("%v, %T\n", aBool, aBool)
 
 	// complex data
-	var aComplex64 complex64 = 1 + 2i
-	var aComplex128 complex128 = 1 + 2i // defaults to complex128
+	var aComplex64 complex64 = complex(1, 5) // result -> 1 + 5i
+	var aComplex128 complex128 = 1 + 2i      // defaults to complex128
 	fmt.Printf("%v, %T\n", aComplex64, aComplex64)
 	fmt.Printf("%v, %T\n", aComplex128, aComplex128)
 	fmt.Printf("%v, %T\n", real(aComplex128), real(aComplex128))
@@ -70,10 +70,14 @@ func main() {
 	fmt.Printf("%v, %T\n", aString[2], aString[2]) // prints ascii value
 	fmt.Printf("%v, %T\n", string(aString[2]), aString[2])
 
-	bytes := []byte(aString)
+	bytes := []byte(aString) // byte slices
 	fmt.Printf("%v, %T\n", bytes, bytes)
 
-	// utf-32 data
+	// utf-32 data, alias for int32
 	var r rune = 'a'
 	fmt.Printf("%v, %T\n", r, r)
+
+	// constants, must initialize at compile-time
+	const constInt = 33
+	fmt.Println(constInt)
 }
