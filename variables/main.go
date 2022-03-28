@@ -77,7 +77,42 @@ func main() {
 	var r rune = 'a'
 	fmt.Printf("%v, %T\n", r, r)
 
-	// constants, must initialize at compile-time
+	// Constants, must initialize at compile-time
+	// Implicit conversion possible for inferred declaration as compiler replaces every occurrence with value
+	// constInt + a -> 33 + a, hence type can change
 	const constInt = 33
-	fmt.Println(constInt)
+	var a int16 = 34
+	fmt.Printf("%v, %T\n", constInt, constInt)
+	fmt.Printf("%v, %T\n", constInt+a, constInt+a)
+
+	const (
+		// In case of block declaration, even if following constants were not declared fully,
+		// they are inferred and assigned from the first declaration
+		// Works with counter assignment
+		// Values scoped at block level
+		aConst = iota
+		bConst
+		cConst
+	)
+	fmt.Printf("%v, %T\n", aConst, aConst)
+	fmt.Printf("%v, %T\n", bConst, bConst)
+	fmt.Printf("%v, %T\n", cConst, cConst)
+
+	const (
+		_ = iota // ignoring zero value, not accessible
+		aaConst
+		abConst
+	)
+	fmt.Printf("%v, %T\n", aaConst, aaConst)
+	fmt.Printf("%v, %T\n", abConst, abConst)
+
+	const (
+		_  = iota             // ignoring zero value, not accessible
+		KB = 1 << (10 * iota) // creating pattern, can not use function
+		MB
+		GB
+	)
+	fmt.Printf("%v, %T\n", KB, KB)
+	fmt.Printf("%v, %T\n", MB, MB)
+	fmt.Printf("%v, %T\n", GB, GB)
 }
